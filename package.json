@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint src/**/*.js",
+    "prettier:check": "prettier --check src/**/*.js"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
