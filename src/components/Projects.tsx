@@ -6,40 +6,50 @@ const Projects = () => {
   const projects = [
     {
       title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with payment integration, user authentication, and admin dashboard. Built with modern web technologies.',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop',
+      description:
+        'Full-stack e-commerce solution with payment integration, user authentication, and admin dashboard. Built with modern web technologies.',
+      image:
+        'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop',
       tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       github: 'https://github.com',
       demo: 'https://demo.com',
     },
     {
       title: 'Task Management App',
-      description: 'Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
+      description:
+        'Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.',
+      image:
+        'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
       tech: ['React', 'Firebase', 'Tailwind CSS'],
       github: 'https://github.com',
       demo: 'https://demo.com',
     },
     {
       title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for social media metrics with beautiful data visualizations and real-time updates.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      description:
+        'Analytics dashboard for social media metrics with beautiful data visualizations and real-time updates.',
+      image:
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
       tech: ['React', 'TypeScript', 'Chart.js', 'REST API'],
       github: 'https://github.com',
       demo: 'https://demo.com',
     },
     {
       title: 'Weather Application',
-      description: 'Real-time weather application with location-based forecasts, interactive maps, and weather alerts.',
-      image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop',
+      description:
+        'Real-time weather application with location-based forecasts, interactive maps, and weather alerts.',
+      image:
+        'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop',
       tech: ['React', 'Weather API', 'Geolocation'],
       github: 'https://github.com',
       demo: 'https://demo.com',
     },
     {
       title: 'Portfolio Website',
-      description: 'Responsive portfolio website with smooth animations, dark mode support, and contact form integration.',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop',
+      description:
+        'Responsive portfolio website with smooth animations, dark mode support, and contact form integration.',
+      image:
+        'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop',
       tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
       github: 'https://github.com',
       demo: 'https://demo.com',

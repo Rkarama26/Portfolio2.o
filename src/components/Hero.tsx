@@ -5,8 +5,10 @@ import { Button } from './ui/button';
 const Hero = () => {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = 'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
-    link.download = 'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
+    link.href =
+      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
+    link.download =
+      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
     link.click();
   };
 
@@ -27,16 +29,15 @@ const Hero = () => {
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Hi, I'm{' '}
-              <span className="gradient-text">Rohit Vishwakarma</span>
+              Hi, I'm <span className="gradient-text">Rohit Vishwakarma</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-muted-foreground mb-6">
               Full Stack Developer
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
               Passionate about creating elegant solutions to complex problems.
-              Specialized in building responsive web applications with modern technologies
-              and delivering exceptional user experiences.
+              Specialized in building responsive web applications with modern
+              technologies and delivering exceptional user experiences.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">

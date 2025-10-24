@@ -3,16 +3,16 @@ import { Card, CardContent } from './ui/card';
 
 const experiences = [
   {
-    company: "Innobimb infotech Pvt Ltd",
-    position: "Software Engineer Intern",
-    duration: "Sept 2024 - Dec 2024",
-    location: "Bhopal, India",
+    company: 'Innobimb infotech Pvt Ltd',
+    position: 'Software Engineer Intern',
+    duration: 'Sept 2024 - Dec 2024',
+    location: 'Bhopal, India',
     description: [
-      "Led development of core features using React and TypeScript",
-      "Collaborated with cross-functional teams to deliver high-quality solutions",
-      "Mentored junior developers and conducted code reviews",
+      'Led development of core features using React and TypeScript',
+      'Collaborated with cross-functional teams to deliver high-quality solutions',
+      'Mentored junior developers and conducted code reviews',
     ],
-  }
+  },
 ];
 
 const Experience = () => {
@@ -28,7 +28,10 @@ const Experience = () => {
 
         <div className="max-w-4xl mx-auto space-y-6">
           {experiences.map((exp, index) => (
-            <Card key={index} className="glass-effect border-primary/20 hover:border-primary/40 transition-all duration-300 hover:transform hover:scale-[1.02]">
+            <Card
+              key={index}
+              className="glass-effect border-primary/20 hover:border-primary/40 transition-all duration-300 hover:transform hover:scale-[1.02]"
+            >
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div>
@@ -52,7 +55,10 @@ const Experience = () => {
                 </div>
                 <ul className="space-y-2">
                   {exp.description.map((item, idx) => (
-                    <li key={idx} className="text-muted-foreground flex items-start gap-2">
+                    <li
+                      key={idx}
+                      className="text-muted-foreground flex items-start gap-2"
+                    >
                       <span className="text-primary mt-1">•</span>
                       <span>{item}</span>
                     </li>

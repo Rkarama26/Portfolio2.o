@@ -1,5 +1,4 @@
 const GitHubStats = () => {
-
   const githubUsername = 'Rkarama26';
 
   return (
@@ -41,7 +40,9 @@ const GitHubStats = () => {
 
         {/* GitHub Contribution Calendar */}
         <div className="mt-8 glass-effect rounded-2xl p-4">
-          <h3 className="text-2xl font-semibold mb-4 text-center">Contribution Activity</h3>
+          <h3 className="text-2xl font-semibold mb-4 text-center">
+            Contribution Activity
+          </h3>
           <img
             src={`https://ghchart.rshah.org/0ea5e9/${githubUsername}`}
             alt="GitHub Contribution Calendar"

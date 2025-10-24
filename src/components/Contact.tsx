@@ -36,7 +36,7 @@ const Contact = () => {
       href: 'https://www.linkedin.com/in/rohit026/',
       color: 'hover:bg-primary',
     },
-    
+
     {
       icon: Mail,
       label: 'Email',
@@ -58,8 +58,9 @@ const Contact = () => {
           <div>
             <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
             <p className="text-muted-foreground mb-8">
-              Feel free to reach out to me through any of the following channels.
-              I'm always open to discussing new projects, creative ideas, or opportunities.
+              Feel free to reach out to me through any of the following
+              channels. I'm always open to discussing new projects, creative
+              ideas, or opportunities.
             </p>
 
             <div className="space-y-6">
@@ -73,7 +74,9 @@ const Contact = () => {
                     <info.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{info.label}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {info.label}
+                    </p>
                     <p className="font-medium">{info.value}</p>
                   </div>
                 </a>
@@ -85,8 +88,8 @@ const Contact = () => {
           <div>
             <h3 className="text-2xl font-semibold mb-6">Connect With Me</h3>
             <p className="text-muted-foreground mb-8">
-              Let's connect on social media and stay in touch. Follow me to see my latest
-              projects and professional updates.
+              Let's connect on social media and stay in touch. Follow me to see
+              my latest projects and professional updates.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
@@ -113,9 +116,12 @@ const Contact = () => {
 
             {/* CTA */}
             <div className="mt-8 p-6 glass-effect rounded-xl border-2 border-primary/30">
-              <h4 className="text-xl font-semibold mb-2">Looking for a developer?</h4>
+              <h4 className="text-xl font-semibold mb-2">
+                Looking for a developer?
+              </h4>
               <p className="text-muted-foreground mb-4">
-                I'm currently available for freelance work and full-time opportunities.
+                I'm currently available for freelance work and full-time
+                opportunities.
               </p>
               <Button
                 size="lg"
