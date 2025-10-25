@@ -8,9 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --write .",
     "prepare": "husky install",
-    "prettier:check": "prettier --check src/**/*.js"
+    "format": "prettier --write \"./**/*.{js,ts,tsx,css,json}\"",
+    "check-format": "prettier -c \"./**/*.{js,ts,tsx,css,json}\""
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
