@@ -89,13 +89,16 @@ const About = () => {
           transition={{ delay: 0.6, duration: 0.5 }}
         >
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Hi, I'm Rohit Vishwakarma, a passionate Full Stack Developer
+            specializing in Java Spring Boot and React.js. I love building
+            scalable web applications that combine robust backend logic with
+            seamless user experiences. Over the past few months, I’ve developed
+            full-stack projects including an e-commerce platform for robotics
+            and electronics components, featuring JWT-based authentication,
+            Spring Security, and React UI integration. I'm currently seeking
+            opportunities where I can contribute my skills in Java, Spring Boot,
+            React, and SQL, and grow as a professional developer in a
+            collaborative environment.
           </p>
         </motion.div>
       </motion.div>

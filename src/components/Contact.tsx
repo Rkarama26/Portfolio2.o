@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Contact = () => {
@@ -9,12 +9,7 @@ const Contact = () => {
       value: 'rohit.karma026@gmail.com',
       href: 'mailto:rohit.karma026@gmail.com',
     },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91 9407274612',
-      href: 'tel:+919407274612',
-    },
+
     {
       icon: MapPin,
       label: 'Location',

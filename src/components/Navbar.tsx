@@ -26,9 +26,9 @@ const Navbar = () => {
     // This will be linked to the actual resume file
     const link = document.createElement('a');
     link.href =
-      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
+      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view';
     link.download =
-      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
+      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view';
     link.click();
   };
 
