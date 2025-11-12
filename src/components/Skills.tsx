@@ -1,4 +1,9 @@
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const skills = [
     {
       name: 'JavaScript',
@@ -61,24 +66,62 @@ const Skills = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section id="skills" className="section-padding bg-background">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+      <motion.div
+        ref={ref}
+        className="max-w-7xl mx-auto"
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+      >
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-center mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           Skills & <span className="gradient-text">Technologies</span>
-        </h2>
+        </motion.h2>
         <div className="w-20 h-1 bg-gradient-primary mx-auto mb-12"></div>
 
         {/* Skills */}
         <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-center">
+          <motion.h3
+            className="text-2xl font-semibold mb-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
             Technical Skills
-          </h3>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
+          </motion.h3>
+          <motion.div
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
             {skills.map((skill, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex flex-col items-center gap-3 p-4 glass-effect rounded-xl hover:scale-110 transition-transform group"
+                className="flex flex-col items-center gap-3 p-4 glass-effect rounded-xl cursor-pointer"
+                variants={itemVariants}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <img
                   src={skill.icon}
@@ -88,21 +131,34 @@ const Skills = () => {
                 <span className="text-sm font-medium text-center">
                   {skill.name}
                 </span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Tools */}
         <div>
-          <h3 className="text-2xl font-semibold mb-8 text-center">
+          <motion.h3
+            className="text-2xl font-semibold mb-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             Tools & Platforms
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto">
+          </motion.h3>
+          <motion.div
+            className="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
             {tools.map((tool, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex flex-col items-center gap-3 p-4 glass-effect rounded-xl hover:scale-110 transition-transform group"
+                className="flex flex-col items-center gap-3 p-4 glass-effect rounded-xl cursor-pointer"
+                variants={itemVariants}
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <img
                   src={tool.icon}
@@ -112,11 +168,11 @@ const Skills = () => {
                 <span className="text-sm font-medium text-center">
                   {tool.name}
                 </span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

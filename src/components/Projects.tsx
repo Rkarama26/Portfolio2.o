@@ -1,142 +1,160 @@
-import { Github, ExternalLink } from 'lucide-react';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import ProjectCard from './ProjectCard';
+import { motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+
+interface Repository {
+  name: string;
+  description: string;
+  url: string;
+  homepageUrl: string | null;
+  stargazerCount: number;
+  forkCount: number;
+  primaryLanguage: { name: string } | null;
+  repositoryTopics: { nodes: { topic: { name: string } }[] };
+}
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'E-Commerce Platform',
-      description:
-        'Full-stack e-commerce solution with payment integration, user authentication, and admin dashboard. Built with modern web technologies.',
-      image:
-        'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+  const [repos, setRepos] = useState<Repository[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const ref = useRef(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
     },
-    {
-      title: 'Task Management App',
-      description:
-        'Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.',
-      image:
-        'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop',
-      tech: ['React', 'Firebase', 'Tailwind CSS'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-    },
-    {
-      title: 'Social Media Dashboard',
-      description:
-        'Analytics dashboard for social media metrics with beautiful data visualizations and real-time updates.',
-      image:
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tech: ['React', 'TypeScript', 'Chart.js', 'REST API'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-    },
-    {
-      title: 'Weather Application',
-      description:
-        'Real-time weather application with location-based forecasts, interactive maps, and weather alerts.',
-      image:
-        'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop',
-      tech: ['React', 'Weather API', 'Geolocation'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-    },
-    {
-      title: 'Portfolio Website',
-      description:
-        'Responsive portfolio website with smooth animations, dark mode support, and contact form integration.',
-      image:
-        'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop',
-      tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-    },
-  ];
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  useEffect(() => {
+    const fetchPinnedRepos = async () => {
+      const query = `
+        {
+          user(login: "Rkarama26") {
+            pinnedItems(first: 6, types: REPOSITORY) {
+              nodes {
+                ... on Repository {
+                  name
+                  description
+                  url
+                  homepageUrl
+                  stargazerCount
+                  forkCount
+                  primaryLanguage {
+                    name
+                  }
+                  repositoryTopics(first: 5) {
+                    nodes {
+                      topic {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `;
+
+      try {
+        const response = await fetch('https://api.github.com/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN || ''}`,
+          },
+          body: JSON.stringify({ query }),
+        });
+
+        const data = await response.json();
+
+        if (data.errors) {
+          setError(data.errors[0].message);
+        } else {
+          setRepos(data.data.user.pinnedItems.nodes);
+        }
+      } catch {
+        setError('Failed to fetch pinned repositories');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPinnedRepos();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="projects" className="section-padding bg-card/30">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="animate-pulse">Loading projects...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="projects" className="section-padding bg-card/30">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="text-red-500">Error: {error}</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="section-padding bg-card/30">
-      <div className="max-w-7xl mx-auto">
+      <motion.div
+        ref={ref}
+        className="max-w-7xl mx-auto"
+        initial="hidden"
+        animate="visible"
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
           Featured <span className="gradient-text">Projects</span>
         </h2>
         <div className="w-20 h-1 bg-gradient-primary mx-auto mb-12"></div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-transform group"
-            >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {repos.map((repo) => {
+            const tech = [
+              repo.primaryLanguage?.name || 'Unknown',
+              ...repo.repositoryTopics.nodes
+                .map((t) => t.topic.name)
+                .slice(0, 3),
+            ];
+
+            return (
+              <motion.div key={repo.name} variants={itemVariants}>
+                <ProjectCard
+                  title={repo.name}
+                  description={repo.description || 'No description available'}
+                  image="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop" // Default image
+                  tech={tech}
+                  github={repo.url}
+                  demo={repo.homepageUrl || repo.url}
                 />
-                <div className="absolute inset-0  from-card to-transparent opacity-60"></div>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, i) => (
-                    <Badge
-                      key={i}
-                      variant="secondary"
-                      className="bg-primary/20 text-primary border-primary/30"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    asChild
-                  >
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
-                    asChild
-                  >
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Demo
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

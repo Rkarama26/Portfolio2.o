@@ -13,12 +13,14 @@
     "check-format": "prettier -c \"./**/*.{js,ts,tsx,css,json}\""
   },
   "dependencies": {
+    "@octokit/graphql": "^9.0.3",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.16",
     "@tailwindcss/vite": "^4.1.16",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.24",
     "lucide-react": "^0.546.0",
     "next-themes": "^0.4.6",
     "react": "^19.1.1",
