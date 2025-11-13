@@ -23,12 +23,18 @@ const Hero = () => {
     visible: { opacity: 1, y: 0 },
   };
   const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href =
-      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
-    link.download =
-      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view?usp=sharing';
-    link.click();
+    // Download the resume PDF directly
+    const downloadLink = document.createElement('a');
+    downloadLink.href =
+      'https://drive.google.com/uc?export=download&id=1lwJkwDrLy97w6mCmCAUjPq8wE6BYbV20';
+    downloadLink.download = 'Rohit_Vishwakarma_Resume.pdf';
+    downloadLink.click();
+
+    // Open the Google Drive view link in a new tab
+    window.open(
+      'https://drive.google.com/file/d/1J3Oje6sVKy18el0y36Wv9TZUjSSMoY70/view',
+      '_blank'
+    );
   };
 
   return (

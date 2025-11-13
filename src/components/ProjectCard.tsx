@@ -22,7 +22,7 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <motion.div
-      className="glass-effect rounded-2xl overflow-hidden cursor-pointer"
+      className="glass-effect rounded-2xl overflow-hidden cursor-pointer h-full flex flex-col"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -46,12 +46,14 @@ const ProjectCard = ({
 
       {/* Project Content */}
       <motion.div
-        className="p-6"
+        className="p-6 flex-1 flex flex-col"
         whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
       >
         <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-muted-foreground mb-4 text-sm">{description}</p>
+        <p className="text-muted-foreground mb-4 text-sm flex-1">
+          {description}
+        </p>
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -67,7 +69,7 @@ const ProjectCard = ({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 mt-auto">
           <Button
             variant="outline"
             size="sm"
